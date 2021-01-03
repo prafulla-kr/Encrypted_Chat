@@ -3,6 +3,7 @@ package com.prafulla.encryptedchat;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -15,7 +16,7 @@ import android.widget.TextView;
 public class Inbox extends Fragment  {
 
     View view;
-    TextView txtData;
+    TextView textView;
     private static final String TAG = "Inbox";
 
     public Inbox() {
@@ -50,6 +51,12 @@ public class Inbox extends Fragment  {
         });*/
         return view;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        textView = view.findViewById(R.id.txtData);
+    }
 /*
     TextView txtData;
 
@@ -70,6 +77,6 @@ public class Inbox extends Fragment  {
 
     public void displayReceivedData(String inputMessage)
     {
-        txtData.setText("Data received: "+inputMessage);
+        textView.setText("Data received: "+inputMessage);
     }
 }
