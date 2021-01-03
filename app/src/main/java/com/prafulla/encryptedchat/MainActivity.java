@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements Sent.SendMessage{
     }
     @Override
     public void sendData(String message) {
-        String tag = "android:switcher:" + R.id.viewPager + ":" + 1;
+        String tag = "android:switcher:" + R.id.viewPager + ":" + 0;
         Inbox f = (Inbox) getSupportFragmentManager().findFragmentByTag(tag);
         f.displayReceivedData(message);
     }

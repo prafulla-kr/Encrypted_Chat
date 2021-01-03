@@ -30,25 +30,6 @@ public class Inbox extends Fragment  {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_inbox, container, false);
 
-       /* LinearLayout person1 = view.findViewById(R.id.person1);
-        person1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               /* Intent person1intent = new Intent(getActivity(), MessageReceived.class);
-                String text = getArguments().getString("text");
-                String pass = getArguments().getString("pass");
-                Bundle bundle = new Bundle();
-                bundle.putString("text",text);
-                bundle.putString("pass", pass);
-                person1intent.putExtras(bundle);
-                startActivity(person1intent);
-                displayReceivedData(Inbox.this.toString());
-                Sent sent = new Sent();
-                sent.setTargetFragment(Inbox.this,1);
-                //sent.show(getFragmentManager(),"Sent");
-                sent.getFragmentManager();
-            }
-        });*/
         return view;
     }
 
@@ -57,23 +38,7 @@ public class Inbox extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
         textView = view.findViewById(R.id.txtData);
     }
-/*
-    TextView txtData;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(
-                R.layout.fragment_inbox, container, false);
-        return rootView;
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        txtData = (TextView)view.findViewById(R.id.txtData);
-    }*/
 
     public void displayReceivedData(String inputMessage)
     {
