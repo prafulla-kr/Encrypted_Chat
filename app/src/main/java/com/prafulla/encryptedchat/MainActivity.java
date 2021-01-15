@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity implements Sent.SendMessage{
-    
+public class MainActivity extends AppCompatActivity implements Sent.SendMessage {
+
     private ViewPagerAdaptor viewPagerAdaptor;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity implements Sent.SendMessage{
         viewPager = findViewById(R.id.viewPager);
         viewPagerAdaptor = new ViewPagerAdaptor(getSupportFragmentManager());
 
-        viewPagerAdaptor.addFragment(new Inbox(),"INBOX");
-        viewPagerAdaptor.addFragment(new Sent(),"SENT");
-        viewPagerAdaptor.addFragment(new Contacts(),"CONTACTS");
+        viewPagerAdaptor.addFragment(new Inbox(), "INBOX");
+        viewPagerAdaptor.addFragment(new Sent(), "SENT");
+        viewPagerAdaptor.addFragment(new Contacts(), "CONTACTS");
         viewPager.setAdapter(viewPagerAdaptor);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -44,13 +44,14 @@ public class MainActivity extends AppCompatActivity implements Sent.SendMessage{
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_baseline_send_24);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_baseline_contacts_24);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.viewPager,new Sent()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.viewPager, new Sent()).commit();
     }
+
     @Override
-    public void sendData(String message) {
+    public void sendData(String message, String password) {
         String tag = "android:switcher:" + R.id.viewPager + ":" + 0;
         Inbox f = (Inbox) getSupportFragmentManager().findFragmentByTag(tag);
-        f.displayReceivedData(message);
+        f.displayReceivedData(message, password);
     }
 
 

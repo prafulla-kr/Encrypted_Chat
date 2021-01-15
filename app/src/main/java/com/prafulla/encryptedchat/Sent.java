@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +19,24 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.security.MessageDigest;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 public class Sent extends Fragment {
 
     View view;
     private String m_Text = "";
     public SendMessage SM;
+    String AES = "AES";
 
     public Sent() {
         // Required empty public constructor
     }
+
     public interface SendMessage {
-        void sendData(String inputMessage);
+        void sendData(String inputMessage, String inputPassword);
     }
 
     @Override
@@ -51,12 +59,13 @@ public class Sent extends Fragment {
                 builder.setTitle("Message");
                 View viewInflated = LayoutInflater.from(getContext()).inflate(R.layout.alert_dialog, (ViewGroup) getView(), false);
                 final EditText inputMessage = (EditText) viewInflated.findViewById(R.id.inputMessage);
+                final EditText inputPassword = (EditText) viewInflated.findViewById(R.id.inputPassword);
                 builder.setView(viewInflated);
                 builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //m_Text = inputMessage.getText().toString();
-                        SM.sendData(inputMessage.getText().toString().trim());
+                        SM.sendData(inputMessage.getText().toString().trim(), inputPassword.getText().toString().trim());
                         dialog.dismiss();
                     }
                 });
@@ -83,5 +92,6 @@ public class Sent extends Fragment {
             throw new ClassCastException("Error in retrieving data. Please try again");
         }
     }
+
 
 }
